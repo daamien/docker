@@ -6,9 +6,9 @@
 'port' 		=> '5432',
 'options' 	=> '',  # Backend options 
 'tty'  		=> '',     # Obsolete
-'dbname' 	=> '',
-'user'   	=> '',
-'password'	=> '',
+'dbname' 	=> 'demo',
+'user'   	=> 'demo',
+'password'	=> 'demo',
 
 # Scheduler
 'freq' 		=> '60s',
