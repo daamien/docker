@@ -1,0 +1,11 @@
+pgdash-dummy-db:
+  image: postgres:latest
+  ports:
+   - "5432:5432"
+pgdash-demo:
+  image: dalibo/postgresql-dashboard-demo:latest
+  ports:
+   - "3030:3030"
+  links:
+    - pgdash-dummy-db
+

@@ -1,6 +1,6 @@
 #vim: set ft=dockerfile
  
-FROM postgres:9.5 
+FROM ubuntu:15.10 
 MAINTAINER damien clochard <damien.clochard@dalibo.com>
 
 WORKDIR /usr/local/src
@@ -12,8 +12,11 @@ RUN 	apt-get update \
 	&& cd PostgreSQL-Dashboard-master \
 	&& bundle 
 	
-ADD setup_pgdashboard.sh /docker-entrypoint-initdb.d/
-ADD config_postgresql.rb /usr/local/src/PostgreSQL-Dashboard-master/
+ADD config_postgresql.rb.sample /usr/local/src/PostgreSQL-Dashboard-master/
 
-EXPOSE 3030 5432 
+ADD setup_pgdashboard.sh  /usr/local/src/PostgreSQL-Dashboard-master/
+
+CMD ["/usr/local/src/PostgreSQL-Dashboard-master/setup_pgdashboard.sh"]
+
+EXPOSE 3030  
 

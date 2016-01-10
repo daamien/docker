@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-sudo -u postgres createuser --no-superuser --no-createdb --no-createrole demo 
-sudo -u postgres createdb demo --owner demo  
-sudo -u postgres psql -c "ALTER ROLE demo PASSWORD 'demo';" 
-
 cd /usr/local/src/PostgreSQL-Dashboard-master/	
+
+sed "s/POSTGRES_PORT_5432_TCP_ADDR/$POSTGRES_PORT_5432_TCP_ADDR/" config_postgresql.rb.sample > config_postgresql.rb 
+
 dashing start
+
