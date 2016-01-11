@@ -10,7 +10,9 @@ RUN 	apt-get update \
 	&& wget https://github.com/daamien/PostgreSQL-Dashboard/archive/master.zip \
 	&& unzip master.zip \
 	&& cd PostgreSQL-Dashboard-master \
-	&& bundle 
+	&& bundle \
+        && apt-get purge -y --auto-remove gcc jq make wget unzip \
+        && rm -rf /var/lib/apt/lists/* 
 	
 ADD config_postgresql.rb.sample /usr/local/src/PostgreSQL-Dashboard-master/
 
